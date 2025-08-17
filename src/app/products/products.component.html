@@ -1,0 +1,28 @@
+<h2>Product Form</h2>
+
+<div class="form">
+  <input type="number" placeholder="ID" [(ngModel)]="id" />
+  <input type="text" placeholder="Title" [(ngModel)]="title" />
+  <input type="number" placeholder="Price" [(ngModel)]="price" />
+  <input type="text" placeholder="Description" [(ngModel)]="description" />
+  <input type="text" placeholder="Category" [(ngModel)]="category" />
+  <input type="number" placeholder="Rating" [(ngModel)]="rating" />
+
+  <button (click)="saveProduct()">Save</button>
+  <button (click)="toggleShow()">Show Products</button>
+</div>
+
+<div *ngIf="showList && products.length > 0" class="search">
+  <input type="text" placeholder="Search by title..." [(ngModel)]="searchTerm" />
+</div>
+
+<div *ngIf="showList" class="cards">
+  <div *ngFor="let product of filteredProducts" class="card">
+    <h3>{{ product.title }}</h3>
+    <p><strong>Price:</strong> {{ product.price }} €</p>
+    <p><strong>Description:</strong> {{ product.description }}</p>
+    <p><strong>Category:</strong> {{ product.category }}</p>
+    <p><strong>Rating:</strong> ⭐ {{ product.rating }}</p>
+  </div>
+</div>
+
