@@ -1,0 +1,47 @@
+.modal-cart {
+    position: fixed;
+    top: 20%;
+    left: 30%;
+    width: 40%;
+    height: 60%;
+    background: #d9d0bf;
+    text-align: center;
+    z-index: 1000;
+    border-radius: 5px;
+    border: 1px solid black;
+    overflow: scroll;
+    padding-bottom: 20px;
+
+    .card {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        padding: 25px;
+
+        .cart-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .quantity-controls {
+                display: flex;
+                gap: 8px;
+            }
+        }
+
+       
+    
+    }
+
+     .logOut {
+        position: absolute;
+        top: 10px;
+        left: 5px;
+     }
+
+    .close-btn {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+}

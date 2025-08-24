@@ -2,49 +2,71 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Product } from '../products.model';
 import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, HttpClientModule],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent {
-  id: number = 0;
-  title: string = '';
-  price: number = 0;
-  description: string = '';
-  category: string = '';
-  rating: number = 0;
-
-  products: Product[] = [];
-  showList: boolean = false;
+  filteredProducts: Product[] = [];
+  showList: boolean = true;
   searchTerm: string = '';
 
-  saveProduct() {
-    const newProduct = new Product(this.id, this.title, this.price, this.description, this.category, this.rating);
-    this.products.push(newProduct);
+  constructor(private http: HttpClient) {}
 
-    // Inputs zurücksetzen
-    this.id = 0;
-    this.title = '';
-    this.price = 0;
-    this.description = '';
-    this.category = '';
-    this.rating = 0;
+  ngOnInit() {
+    this.getAllProducts();
   }
 
-  
-
-  toggleShow() {
-    this.showList = !this.showList;
+  getAllProducts() {
+    this.http
+      .get<any[]>('https://restaurant.stepprojects.ge/api/Products/GetAll')
+      .subscribe({
+        next: data => {
+          this.filteredProducts = data; 
+          console.log('Productos:', this.filteredProducts);
+        },
+        error: err => {
+          console.error('Error:', err);
+        }
+      });
   }
 
-  get filteredProducts(): Product[] {
-    return this.products.filter(p =>
-      p.title.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
+  addToCart(quantity: number, price: number, productId: number) {
+     const body = {
+        productId: productId,
+        quantity: quantity,
+        price: price
+      };
+
+      this.http
+        .post<any>('https://restaurant.stepprojects.ge/api/Baskets/AddToBasket', body)
+        .subscribe({
+          next: data => {
+            console.log('Producto agregado al carrito:', data);
+          },
+          error: err => {
+            console.error('Error al agregar producto al carrito:', err);
+        }
+    });
   }
+
+  //  saveProduct() {
+  //   const newProduct = new Product(this.id, this.title, this.price, this.description, this.category, this.rating);
+  //   this.products.push(newProduct);
+// 
+  //   // Inputs zurücksetzen
+  //   this.id = 0;
+  //   this.title = '';
+  //   this.price = 0;
+  //   this.description = '';
+  //   this.category = '';
+  //   this.rating = 0;
+  // }
+
 }

@@ -1,1 +1,25 @@
-<p>cart works!</p>
+ <div class="modal-cart">
+    <button class="close-btn" (click)="close.emit()">❌</button>
+    <h2>თქვენი კალათა</h2>
+
+
+    <div class="cart-items">
+        <div *ngFor="let product of cartProducts" class="card">
+        
+        <div class="item-info">
+            <strong> {{ product.name }}</strong><br>
+                ფასი: {{ product.price }} €<br>
+        </div>
+        <div class="cart-actions">
+            <button class="remove-item">X remove</button>
+            <div class="quantity-controls">
+            <button class="decrease-qty">-</button>
+            <span class="qty-number">{{ product.quantity }}</span>
+            <button class="increase-qty">+</button>
+            </div>
+        </div>
+    </div>
+    <button class="checkout-btn">Pay Now</button>
+    <button class="logOut butt-style">Log Out</button>
+
+</div>

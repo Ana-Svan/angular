@@ -26,13 +26,23 @@ nav {
        
 
         li {
-
             a {
                 text-decoration: none;
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 font-style: italic;
                 font-weight: 600;
                 color: rgb(19, 17, 17);
+
+                &.cart-icon {   
+                    position: relative;     
+                    display: flex;
+
+                   span {
+                           position: absolute;
+                           top: -8px;
+                            right: 17px;
+                    }
+                }
 
             }
            

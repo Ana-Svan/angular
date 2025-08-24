@@ -14,10 +14,16 @@
 </li>
          <!--<li><a routerLink="logo" [routerLinkActive]="active">logo</a></li> -->
         <li><a routerLink="home" [routerLinkActive]="active">Home</a></li>
-        
-        <li><a routerLink="cart" [routerLinkActive]="active">cart</a></li>
-    </ul>
 
-    
+        <li>
+          <div class="cart-icon">
+            <a (click)="toggleCart()" [routerLinkActive]="active" class="cart-icon">
+              <i class="fas fa-shopping-cart"></i>
+            </a>
+          </div>
+        </li>
+    </ul>
 </nav>
+<app-cart *ngIf="showCart" (close)="toggleCart()" class="cart"></app-cart>
+
 </header>
