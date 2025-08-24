@@ -29,7 +29,7 @@ export class ProductsComponent {
       .subscribe({
         next: data => {
           this.filteredProducts = data; 
-          console.log('Productos:', this.filteredProducts);
+          console.log('Products:', this.filteredProducts);
         },
         error: err => {
           console.error('Error:', err);
@@ -48,10 +48,10 @@ export class ProductsComponent {
         .post<any>('https://restaurant.stepprojects.ge/api/Baskets/AddToBasket', body)
         .subscribe({
           next: data => {
-            console.log('Producto agregado al carrito:', data);
+            console.log('Product added to cart:', data);
           },
           error: err => {
-            console.error('Error al agregar producto al carrito:', err);
+            console.error('Error:', err);
         }
     });
   }
