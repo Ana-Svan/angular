@@ -4,18 +4,20 @@
 
 
     <div class="cart-items">
-        <div *ngFor="let product of cartProducts" class="card">
+        <div *ngFor="let cartElement of cartElements; let i = index" class="card">
         
         <div class="item-info">
-            <strong> {{ product.name }}</strong><br>
-                ფასი: {{ product.price }} €<br>
+            <strong> {{ cartElement.product.name }}</strong><br>
+                ფასი: {{ cartElement.price }} €<br>
         </div>
         <div class="cart-actions">
-            <button class="remove-item">X remove</button>
+            <button (click)="deleteAllFromCart(cartElement.product.id)" class="remove-item">X remove</button>
             <div class="quantity-controls">
-            <button class="decrease-qty">-</button>
-            <span class="qty-number">{{ product.quantity }}</span>
-            <button class="increase-qty">+</button>
+            <button (click)="deleteFromCart(cartElement.product.id)" class="decrease-qty">-</button>
+            <span class="qty-number">{{ cartElement.quantity }}</span>
+            <button (click)="addToCart(cartElement.quantity, cartElement.price, cartElement.product.id)">+</button>
+
+
             </div>
         </div>
     </div>

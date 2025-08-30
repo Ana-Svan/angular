@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Product } from '../products.model';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -17,7 +17,7 @@ export class ProductsComponent {
   showList: boolean = true;
   searchTerm: string = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cartService: CartService) {}
 
   ngOnInit() {
     this.getAllProducts();
@@ -38,22 +38,7 @@ export class ProductsComponent {
   }
 
   addToCart(quantity: number, price: number, productId: number) {
-     const body = {
-        productId: productId,
-        quantity: quantity,
-        price: price
-      };
-
-      this.http
-        .post<any>('https://restaurant.stepprojects.ge/api/Baskets/AddToBasket', body)
-        .subscribe({
-          next: data => {
-            console.log('Product added to cart:', data);
-          },
-          error: err => {
-            console.error('Error:', err);
-        }
-    });
+     this.cartService.addToCart(quantity, price, productId);
   }
 
   //  saveProduct() {

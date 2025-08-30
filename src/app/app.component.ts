@@ -5,15 +5,18 @@ import { HomeComponent } from './home/home.component';
 import { CartComponent } from './cart/cart.component';
 import { ProductsComponent } from "./products/products.component";
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { CartElement } from './cart-element';
+import { bootstrapApplication } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, HomeComponent, CartComponent, ProductsComponent, HttpClientModule],
+  imports: [RouterOutlet, HeaderComponent, HomeComponent, CartComponent, ProductsComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
+
 export class AppComponent {
   title = 'angular2';
 }
