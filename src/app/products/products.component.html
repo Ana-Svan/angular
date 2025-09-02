@@ -3,6 +3,40 @@
 <div *ngIf="showList && filteredProducts.length > 0" class="search">
   <input type="text" placeholder="Search by title..." [(ngModel)]="searchTerm" />
 </div>
+    <div class="categori-cont">
+    <h1>Categories</h1>
+      <ul>
+        <li *ngFor="let c of categories">
+      <button (click)="filters.categoryId = c.id; filterProducts()" [class.active]="filters.categoryId === c.id">
+        {{ c.name }}
+      </button>
+    </li>
+    <li>
+      <button (click)="filters.categoryId = null; filterProducts()" [class.active]="!filters.categoryId">
+        All
+      </button>
+    </li>
+      </ul>
+    <div class="category-filter">
+      <div class="filt-btn-dropdown">
+        <button class="filter-button">Extra Filter</button>
+        <div id="extra-filter">
+          <div class="filter-dropdown">
+            <div class="checkbox-group">
+              <input type="checkbox" id="nuts" [(ngModel)]="filters.nuts">
+              <label for="nuts">Nuts only</label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="vegetables"  [(ngModel)]="filters.vegetables">
+              <label for="vegetables">Vegetables only</label>
+            </div>
+            <label for="range">Spiciness: <span id="spice-level">{{ getSpiceLabel() }}</span></label>
+            <input type="range" name="range" id="range" min="0" max="4" value="0" [(ngModel)]="filters.spiceLevel">
+            <button (click)="filterProducts()" class="extra-filter-btn ">Apply Filter</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
 <div *ngIf="showList" class="cards">
   <div *ngFor="let product of filteredProducts" class="card">
