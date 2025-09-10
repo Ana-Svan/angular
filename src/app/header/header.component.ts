@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CartComponent } from '../cart/cart.component';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,8 +13,14 @@ import { CartComponent } from '../cart/cart.component';
 export class HeaderComponent {
   showCart = false
   active = "active"
+  
+  constructor(public auth: AuthService, private router: Router) {}
 
   toggleCart() {
-    this.showCart = !this.showCart;
-  }
+    if (this.auth.isAuthenticated()) {   
+        this.showCart = !this.showCart;
+      } else {
+        this.router.navigate(['/login']); 
+      }  
+    }
 }

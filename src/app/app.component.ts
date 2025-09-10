@@ -7,6 +7,7 @@ import { ProductsComponent } from "./products/products.component";
 import { CommonModule } from '@angular/common';
 import { CartElement } from './cart-element';
 import { bootstrapApplication } from '@angular/platform-browser';
+import { SearchPipe } from './pipe/search.pipe';
 
 @Component({
   selector: 'app-root',

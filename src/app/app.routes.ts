@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CartComponent } from './cart/cart.component';
 import { ErrorComponent } from './error/error.component';
+import { LoginComponent } from './login/login.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
 
@@ -30,13 +32,20 @@ export const routes: Routes = [
         component: CartComponent
 
     },
-
-
+    { 
+        path: 'login', 
+        component: LoginComponent 
+    },
+    { 
+        path: 'popup',
+        component: CartComponent, 
+        canActivate: [authGuard] 
+    },
     {
         // ამასაც ვწერთ აქ ბოლოში ყოველთვის. (ახალი ტერმინალით ვქმით error componet-ს. -> new terminal -> gn g c error) wilde card - 
         // ნებისმიერ რამეს ნისნავს, ანუ თუ მომხმარებელმა ნებისმიერი რამე რომ სემოიყვანოს, გადაიყვანე რამე კომპონენტზე.
         path: '**',
-        component: ErrorComponent
+        redirectTo: 'login'
     },
 
 

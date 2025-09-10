@@ -4,11 +4,12 @@ import { Product } from '../products.model';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { CartService } from '../services/cart.service';
+import { SearchPipe } from '../pipe/search.pipe';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [FormsModule, CommonModule, HttpClientModule],
+  imports: [FormsModule, CommonModule, HttpClientModule, SearchPipe],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })

@@ -39,7 +39,7 @@
     </div>
 
 <div *ngIf="showList" class="cards">
-  <div *ngFor="let product of filteredProducts" class="card">
+  <div *ngFor="let product of filteredProducts | search:searchTerm" class="card">
     <h3>{{ product.title }}</h3>
     <img class="product-image" src="{{ product.image }}" />
     <p><strong>Price:</strong> {{ product.price }} €</p>
