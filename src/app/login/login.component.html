@@ -1,9 +1,11 @@
 <div class="login-container">
-  <h2>Iniciar Sesión</h2>
+  <h2>Login</h2>
   <form (ngSubmit)="onSubmit()">
     <input [(ngModel)]="email" name="phoneNumber" type="text" placeholder="Phone number" required />
     <input [(ngModel)]="password" name="password" type="password" placeholder="Password" required />
     <button type="submit">Login</button>
   </form>
   <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+  <button type="button" (click)="goToRegister()">Create account</button>
+
 </div>

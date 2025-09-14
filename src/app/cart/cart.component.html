@@ -1,27 +1,45 @@
- <div class="modal-cart">
-    <button class="close-btn" (click)="close.emit()">❌</button>
+<div class="modal-cart">
+  <button class="close-btn" (click)="onClose()">❌</button>
+
+  <ng-container *ngIf="isAuthenticated; else authTemplate">
     <h2>თქვენი კალათა</h2>
 
-
     <div class="cart-items">
-        <div *ngFor="let cartElement of cartElements; let i = index" class="card">
-        
+      <div *ngFor="let cartElement of cartElements; let i = index" class="card">
         <div class="item-info">
-            <strong> {{ cartElement.product.name }}</strong><br>
-                ფასი: {{ cartElement.price }} €<br>
+          <strong>{{ cartElement.product.name }}</strong><br>
+          ფასი: {{ cartElement.price }} €<br>
         </div>
         <div class="cart-actions">
-            <button (click)="deleteAllFromCart(cartElement.product.id)" class="remove-item">X remove</button>
-            <div class="quantity-controls">
+          <button (click)="deleteAllFromCart(cartElement.product.id)" class="remove-item">X remove</button>
+
+          <div class="quantity-controls">
             <button (click)="deleteFromCart(cartElement.product.id)" class="decrease-qty">-</button>
             <span class="qty-number">{{ cartElement.quantity }}</span>
             <button (click)="addToCart(cartElement.quantity, cartElement.price, cartElement.product.id)">+</button>
-
-
-            </div>
+          </div>
         </div>
+      </div>
     </div>
+
     <button class="checkout-btn">Pay Now</button>
-    <button class="logOut butt-style">Log Out</button>
+    <button class="logOut butt-style" (click)="logOut()">Log Out</button>
+  </ng-container>
+
+  <ng-template #authTemplate>
+  <ng-container [ngSwitch]="mode">
+    <app-login
+      *ngSwitchCase="'login'"
+      (loggedIn)="onLoginSuccess()"
+      (switchToRegister)="mode='register'">
+    </app-login>
+
+    <app-register
+      *ngSwitchCase="'register'"
+      (registered)="onRegisterSuccess()"
+      (switchToLogin)="mode='login'">
+    </app-register>
+  </ng-container>
+</ng-template>
 
 </div>

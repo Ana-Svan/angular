@@ -1,29 +1,25 @@
 <header>
-
-<nav>
+  <nav>
     <ul>
-
-    <li>
-  <a routerLink="logo">
-    <img 
-      src="https://restaurant.stepprojects.ge/images/logo.png" 
-      alt="Logo" 
-      style="height: 80px;"
-       />
-  </a>
-</li>
-         <!--<li><a routerLink="logo" [routerLinkActive]="active">logo</a></li> -->
-        <li><a routerLink="home" [routerLinkActive]="active">Home</a></li>
-
-        <li>
-          <div class="cart-icon">
-            <a (click)="toggleCart()" [routerLinkActive]="active" class="cart-icon">
-              <i class="fas fa-shopping-cart"></i>
-            </a>
-          </div>
-        </li>
+      <li>
+        <a routerLink="logo">
+          <img src="https://restaurant.stepprojects.ge/images/logo.png" alt="Logo" style="height: 80px;" />
+        </a>
+      </li>
+      <li><a routerLink="home" [routerLinkActive]="active">Home</a></li>
+      <li>
+        <button (click)="toggleCart()" class="cart-icon">
+          <i class="fas fa-shopping-cart"></i>
+        </button>
+      </li>
     </ul>
-</nav>
-<app-cart *ngIf="showCart" (close)="toggleCart()" class="cart"></app-cart>
+  </nav>
 
+  <!-- Popup modal -->
+  <app-cart
+    *ngIf="showCart"
+    [isAuthenticated]="isAuthenticated"
+    (close)="showCart=false"
+    (loggedIn)="onLoginSuccess()">
+  </app-cart>
 </header>

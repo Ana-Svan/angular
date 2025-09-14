@@ -1,0 +1,13 @@
+<div class="reg-form">
+  <h2>Register</h2>
+  <form (ngSubmit)="onSubmit()">
+    <input [(ngModel)]="phoneNumber" name="phoneNumber" type="text" placeholder="Phone Number" class="NumberReg" required>
+    <input [(ngModel)]="email" name="email" type="email" placeholder="Email" class="regEmail" required>
+    <input [(ngModel)]="password" name="password" type="password" placeholder="Password" class="password" required>
+    <input [(ngModel)]="firstName" name="firstName" type="text" placeholder="First Name" class="FirstNamReg" required>
+    <input [(ngModel)]="lastName" name="lastName" type="text" placeholder="Last Name" class="LastNamReg" required>
+    <button type="submit" class="btnReg butt-style">Register</button>
+  </form>
+  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+  <button type="button" (click)="onBackToLogin()">I have an account</button>
+</div>
