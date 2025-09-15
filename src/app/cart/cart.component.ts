@@ -22,6 +22,7 @@ export class CartComponent {
   @Output() loggedIn = new EventEmitter<void>();
   @Output() loggedOut = new EventEmitter<void>();
   mode: 'login' | 'register' = 'login';
+  totalPrice: number = 0;
 
   cartElements: CartElement[] = [];
 
@@ -50,8 +51,9 @@ export class CartComponent {
   getCartProducts() {
     this.http.get<any[]>('https://restaurant.stepprojects.ge/api/Baskets/GetAll').subscribe({
       next: data => {
+        console.log(data);
         this.cartElements = this.groupProducts(data);
-        console.log(this.cartElements);
+        this.updateTotalPrice();
       },
       error: err => console.error('Error:', err)
     });
@@ -64,6 +66,7 @@ export class CartComponent {
     if (!item) return;
 
     item.quantity += 1;
+    this.updateTotalPrice();
   }
 
   deleteFromCart(productId: number) {
@@ -80,6 +83,8 @@ export class CartComponent {
     } else {
       this.cartElements = this.cartElements.filter(el => el.product.id !== productId);
     }
+
+    this.updateTotalPrice();
   }
 
   deleteAllFromCart(productId: number) {
@@ -94,9 +99,11 @@ export class CartComponent {
       next: () => console.log('Product deleted'),
       complete: () => {
         this.cartElements = this.cartElements.filter(el => el.product.id !== productId);
+        this.updateTotalPrice();
       },
       error: err => console.error('Error:', err)
     });
+
   }
 
   groupProducts(data: any[]): CartElement[] {
@@ -111,6 +118,13 @@ export class CartComponent {
     }, {} as { [key: number]: any });
 
     return Object.values(grouped);
+  }
+
+  private updateTotalPrice() {
+    this.totalPrice = this.cartElements.reduce(
+      (acc, item) => acc + item.product.price * item.quantity,
+      0
+    );
   }
 
   logOut() {
