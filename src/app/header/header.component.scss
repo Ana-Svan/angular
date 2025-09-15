@@ -1,9 +1,10 @@
 header{
 width: 100%;
-height: 50vh;
-background-image: url(../../../public/top-view-delicious-pasta-table_23-2150857952.jpg);
-background-position: center;
+height: 20vh;
+background-image: url(../../../public/360_F_755539888_q4PDoaknuhR2CqTtl79LJFr8pbH6h3lS.jpg);
+background-position: center 60%;
 background-size: cover;
+background-repeat: no-repeat;
 
 
 display: flex;
@@ -52,7 +53,7 @@ nav {
 
 .active {
 
-    background-color: rgb(236, 231, 208);
+    background-color: #e6e6e6;
     padding: 10px 20px;
     border-radius: 8px;
 

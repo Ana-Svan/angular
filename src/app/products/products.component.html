@@ -1,25 +1,28 @@
-<h2>Product Filter</h2>
-
 <div *ngIf="showList && filteredProducts.length > 0" class="search">
   <input type="text" placeholder="Search by title..." [(ngModel)]="searchTerm" />
 </div>
-    <div class="categori-cont">
+<div class="categori-cont">
+  <div class="cat-cont-h1">
     <h1>Categories</h1>
+  </div>
+  <div class="cat-filter-down">
+    <div class="cat-cont-ul">
       <ul>
         <li *ngFor="let c of categories">
-      <button (click)="filters.categoryId = c.id; filterProducts()" [class.active]="filters.categoryId === c.id">
-        {{ c.name }}
-      </button>
-    </li>
-    <li>
-      <button (click)="filters.categoryId = null; filterProducts()" [class.active]="!filters.categoryId">
-        All
-      </button>
-    </li>
+          <button (click)="filters.categoryId = c.id; filterProducts()" [class.active]="filters.categoryId === c.id">
+            {{ c.name }}
+          </button>
+        </li>
+        <li>
+          <button (click)="filters.categoryId = null; filterProducts()" [class.active]="!filters.categoryId">
+            All
+          </button>
+        </li>
       </ul>
+    </div>
     <div class="category-filter">
       <div class="filt-btn-dropdown">
-        <button class="filter-button">Extra Filter</button>
+        <a class="filter-button">Extra Filter</a>
         <div id="extra-filter">
           <div class="filter-dropdown">
             <div class="checkbox-group">
@@ -27,7 +30,7 @@
               <label for="nuts">Nuts only</label>
             </div>
             <div class="checkbox-group">
-              <input type="checkbox" id="vegetables"  [(ngModel)]="filters.vegetables">
+              <input type="checkbox" id="vegetables" [(ngModel)]="filters.vegetables">
               <label for="vegetables">Vegetables only</label>
             </div>
             <label for="range">Spiciness: <span id="spice-level">{{ getSpiceLabel() }}</span></label>
@@ -37,6 +40,8 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
 
 <div *ngIf="showList" class="cards">
   <div *ngFor="let product of filteredProducts | search:searchTerm" class="card">
@@ -50,4 +55,3 @@
     <button (click)="addToCart(1, product.price, product.id)">Add to cart</button>
   </div>
 </div>
-
