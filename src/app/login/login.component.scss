@@ -1,0 +1,78 @@
+.login-container {
+
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+
+    form {
+
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        width: 100%;
+
+
+        input {
+            width: 70%;
+            height: auto;
+            padding: 8px 5px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+        }
+
+        button {
+
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid grey;
+            cursor: pointer;
+            background-color: white;
+        }
+    }
+
+    button {
+
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid grey;
+        cursor: pointer;
+        background-color: white;
+    }
+
+}
+
+
+
+/* responsive*/
+
+@media (max-width: 800px) {
+
+    .login-container {
+
+        form {
+
+            input {
+
+                width: 90%;
+            }
+
+
+        button {
+
+            padding: 10px 12px;
+            border-radius: 5px;
+         
+        }
+
+
+        }
+
+    }
+
+
+}

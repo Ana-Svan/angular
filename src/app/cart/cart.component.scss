@@ -1,16 +1,20 @@
 .modal-cart {
     position: fixed;
-    top: 20%;
+    top: 25%;
     left: 30%;
     width: 40%;
     height: 60%;
-    background: #d9d0bf;
+    background: rgb(250, 235, 215);
     text-align: center;
     z-index: 1000;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px solid rgb(196, 8, 8);
     overflow: scroll;
     padding-bottom: 20px;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+     overflow: auto;
+    
+
 
     .card {
         display: flex;
@@ -44,4 +48,45 @@
         right: 10px;
         top: 10px;
     }
+
+    .checkout-btn{
+
+    padding: 10px;
+    margin-top: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+
+    }
+
+    .butt-style{
+
+    padding: 7px;
+    margin-top: 1px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);  
+    }
+    
+
 }
+
+
+
+
+
+/*    responsive */
+
+
+
+ @media (max-width: 800px){
+.modal-cart{
+
+    height: 40%;
+
+  
+    }
+
+ }

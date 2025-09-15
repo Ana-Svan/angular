@@ -95,17 +95,6 @@ export class ProductsComponent {
      return this.spiceLabels[this.filters.spiceLevel] || 'Not Chosen';
   }
 
-  //  saveProduct() {
-  //   const newProduct = new Product(this.id, this.title, this.price, this.description, this.category, this.rating);
-  //   this.products.push(newProduct);
-// 
-  //   // Inputs zurücksetzen
-  //   this.id = 0;
-  //   this.title = '';
-  //   this.price = 0;
-  //   this.description = '';
-  //   this.category = '';
-  //   this.rating = 0;
-  // }
+ 
 
 }

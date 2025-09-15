@@ -7,7 +7,8 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule],
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
   email = '';
