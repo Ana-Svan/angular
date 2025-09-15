@@ -8,11 +8,12 @@ import { CommonModule } from '@angular/common';
 import { CartElement } from './cart-element';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { SearchPipe } from './pipe/search.pipe';
+import { FooterComponent } from "./footer/footer.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, HomeComponent, CartComponent, ProductsComponent],
+  imports: [RouterOutlet, HeaderComponent, HomeComponent, CartComponent, ProductsComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
